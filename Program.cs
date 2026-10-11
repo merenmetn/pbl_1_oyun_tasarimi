@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Globalization;
 
 class Program
@@ -67,16 +68,76 @@ Console.WriteLine("Player Type: " + player_type);
             Console.WriteLine("NOTOS: " + notos + " = A-B-C-D-E");
         }
 
+
+
+
+//1. satir hucreleri 
+char h11=' ';
+char h12=' ';
+char h13=' ';
+//2. satir hucreleri
+char h21=' ';
+char h22=' ';
+char h23=' ';
+//3. satir hucreleri
+char h31=' ';
+char h32=' ';
+char h33=' ';
+
+Random rnd = new Random();
+int yerlestirilenSembol = 0;
+
+while (yerlestirilenSembol < nos)
+{
+    int rastgeleHucre = rnd.Next(1, 10);
+    
+    char rastgeleHarf = (char)('A' + rnd.Next(0, notos));
+
+    switch (rastgeleHucre)
+    {
+        case 1:
+            if (h11 == ' ') { h11 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 2:
+            if (h12 == ' ') { h12 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 3:
+            if (h13 == ' ') { h13 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 4:
+            if (h21 == ' ') { h21 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 5:
+            if (h22 == ' ') { h22 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 6:
+            if (h23 == ' ') { h23 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 7:
+            if (h31 == ' ') { h31 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 8:
+            if (h32 == ' ') { h32 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+        case 9:
+            if (h33 == ' ') { h33 = rastgeleHarf; yerlestirilenSembol++; }
+            break;
+    }
+}
+
+
 Console.WriteLine("NOS: " + nos);
 Console.WriteLine("Number of Shifts: " + shift_number);
-Console.WriteLine("   7  8  9 ");
-Console.WriteLine(" +---------+");
-Console.WriteLine("1|         |4");
-Console.WriteLine(" |         |");
-Console.WriteLine("2|         |5");
-Console.WriteLine(" |         |");
-Console.WriteLine("3|         |6");
-Console.WriteLine(" +---------+");
-Console.WriteLine("  10 11 12  ");
+Console.WriteLine("|| Başlangıç Tahtası ||");
+Console.WriteLine( "     12   11  10 ");  
+Console.WriteLine("     ---+---+---");
+Console.WriteLine($" 1  | {h11} | {h12} | {h13} |  9");
+Console.WriteLine("     ---+---+---");
+Console.WriteLine($" 2  | {h21} | {h22} | {h23} |  8");
+Console.WriteLine("     ---+---+---");
+Console.WriteLine($" 3  | {h31} | {h32} | {h33} |  7");
+Console.WriteLine("     ---+---+---");
+Console.WriteLine( "      4   5   6 ");  
     }   
     }
+
