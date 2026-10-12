@@ -86,7 +86,7 @@ while(yerleştirilensembol < nos)
         {
             int rastgeleHucre = rnd.Next(1,10);
 
-            char rastgeleharf = (char)('A' + rnd.Next(0, notos));
+            char rastgeleharf = Convert.ToChar('A' + rnd.Next(0, notos));
 
             switch (rastgeleHucre)
             {
@@ -171,22 +171,29 @@ Console.WriteLine($"3 | {h31}   {h32}   {h33} | 6");
 Console.WriteLine("  +-----------+  ");
 Console.WriteLine("   10  11  12  ");
 
+//Shift Commands
 int shift;    
 int yapilantoplamshift = 0;
         while (yapilantoplamshift < numberofshift)
         {
-        Console.Write("Enter shift command (1-12)");
+        Console.Write("Enter shift command (1-12): ");
         shift = Convert.ToInt32(Console.ReadLine());
             while(shift<1 || shift > 12)
             {
-                Console.Write("Enter shift command (1-12)");
+                Console.Write("Enter shift command (1-12): ");
                 shift = Convert.ToInt32(Console.ReadLine());
             }
 
             switch (shift)
             {
                 case 1:
-                    if(h13 == ' ')
+                    if(h13 == ' '&& h12 == ' ')
+                    {
+                        h13 = h11;
+                        h11 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h13 == ' ')
                     {
                         h13 = h12;
                         h12 = h11;
@@ -201,7 +208,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 2:
-                    if(h23 == ' ')
+                    if(h23 == ' '&& h22 == ' ')
+                    {
+                        h23 = h21;
+                        h21 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h23 == ' ')
                     {
                         h23 = h22;
                         h22 = h21;
@@ -216,7 +229,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 3:
-                    if(h33 == ' ')
+                    if(h33 == ' '&& h32 == ' ')
+                    {
+                        h33 = h31;
+                        h31 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h33 == ' ')
                     {
                         h33 = h32;
                         h32 = h31;
@@ -231,7 +250,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 4:
-                    if(h11 == ' ')
+                    if(h12 == ' '&& h11 == ' ')
+                    {
+                        h11 = h13;
+                        h13 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h11 == ' ')
                     {
                         h11 = h12;
                         h12 = h13;
@@ -246,7 +271,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 5:
-                    if(h21 == ' ')
+                    if(h22 == ' '&& h21 == ' ')
+                    {
+                        h21 = h23;
+                        h23 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h21 == ' ')
                     {
                         h21 = h22;
                         h22 = h23;
@@ -261,7 +292,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 6:
-                    if(h31 == ' ')
+                    if(h32 == ' '&& h31 == ' ')
+                    {
+                        h31 = h33;
+                        h33 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h31 == ' ')
                     {
                         h31 = h32;
                         h32 = h33;
@@ -276,7 +313,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 7:
-                    if(h31 == ' ')
+                    if(h31 == ' '&& h21 == ' ')
+                    {
+                        h31 = h11;
+                        h11 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h31 == ' ')
                     {
                         h31 = h21;
                         h21 = h11;
@@ -291,7 +334,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 8:
-                    if(h32 == ' ')
+                    if(h32 == ' '&& h22 == ' ')
+                    {
+                        h32 = h12;
+                        h12 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h32 == ' ')
                     {
                         h32 = h22;
                         h22 = h12;
@@ -304,9 +353,16 @@ int yapilantoplamshift = 0;
                             h12 = ' ';
                             yapilantoplamshift++;
                         }
+                    
                     break;
                 case 9:
-                    if(h33 == ' ')
+                    if(h33 == ' '&& h23 == ' ')
+                    {
+                        h33 = h13;
+                        h13 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h33 == ' ')
                     {
                         h33 = h23;
                         h23 = h13;
@@ -321,7 +377,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 10:
-                    if(h11 == ' ')
+                    if(h21 == ' '&& h11 == ' ')
+                    {
+                        h11 = h31;
+                        h31 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h11 == ' ')
                     {
                         h11 = h21;
                         h21 = h31;
@@ -336,7 +398,13 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 11:
-                    if(h12 == ' ')
+                    if(h22 == ' '&& h12 == ' ')
+                    {
+                        h12 = h32;
+                        h32 = ' ';
+                        yapilantoplamshift++;
+                    }
+                    else if(h12 == ' ')
                     {
                         h12 = h22;
                         h22 = h32;
@@ -351,6 +419,12 @@ int yapilantoplamshift = 0;
                         }
                     break;
                 case 12:
+                    if(h13 == ' '&& h23 == ' ')
+                    {
+                        h13 = h33;
+                        h33 = ' ';
+                        yapilantoplamshift++;
+                    }
                     if(h13 == ' ')
                     {
                         h13 = h23;
@@ -366,22 +440,23 @@ int yapilantoplamshift = 0;
                         }
                     break;
                     }
-Console.WriteLine("--- Round 1 ---");
+Console.WriteLine(" --- Round "+ (yapilantoplamshift) + " ---");
 Console.WriteLine("    7   8   9 ");
 Console.WriteLine("  +-----------+      Board ");
 Console.WriteLine($"1 | {h11}   {h12}   {h13} | 4    Score : 0");
 Console.WriteLine("  |           |  ");
-Console.WriteLine($"2 | {h21}   {h22}   {h23} | 5");
+Console.WriteLine($"2 | {h21}   {h22}   {h23} | 5    Yapılan toplam shift: " + yapilantoplamshift);
 Console.WriteLine("  |           |  ");
 Console.WriteLine($"3 | {h31}   {h32}   {h33} | 6    Shift: "+ shift);
 Console.WriteLine("  +-----------+  ");
 Console.WriteLine("   10  11  12  ");
 
-Console.WriteLine("The ShapeShifter is over!");
+
 
             
                 
 
         }
+Console.WriteLine("The ShapeShifter is over!");
     }   
     }
