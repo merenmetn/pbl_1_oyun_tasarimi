@@ -744,7 +744,7 @@ Console.WriteLine("   10  11  12                 10  11  12  ");
                         h33 = ' ';
                         yapilantoplamshift++;
                     }
-                    if (h13 == ' ')
+                    else if (h13 == ' ')
                     {
                         h13 = h23;
                         h23 = h33;
