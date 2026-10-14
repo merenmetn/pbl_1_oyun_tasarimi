@@ -173,17 +173,35 @@ char g33=h33;
 //Target Board Shift Commands
     
 
-int sayac1=0;
-        while (sayac1 < numberofshift)
-        {
+int sayac1 = 0;
+int lastShift = 0; // Son yapılan geçerli hamleyi tutacak değişken
 
-            char old_g11 = g11, old_g12 = g12, old_g13 = g13;
-            char old_g21 = g21, old_g22 = g22, old_g23 = g23;
-            char old_g31 = g31, old_g32 = g32, old_g33 = g33;
-            
-            int randomShift = rnd.Next(1,13);
-            switch (randomShift)
-            {
+while (sayac1 < numberofshift)
+{
+    char old_g11 = g11, old_g12 = g12, old_g13 = g13;
+    char old_g21 = g21, old_g22 = g22, old_g23 = g23;
+    char old_g31 = g31, old_g32 = g32, old_g33 = g33;
+    
+    int randomShift;
+    bool isOpposite;
+    
+    // Zıt hamle gelirse yeniden rastgele sayı üret
+    do
+    {
+        randomShift = rnd.Next(1, 13);
+        isOpposite = false;
+        
+        if ((lastShift == 1 && randomShift == 4) || (lastShift == 4 && randomShift == 1)) isOpposite = true;
+        else if ((lastShift == 2 && randomShift == 5) || (lastShift == 5 && randomShift == 2)) isOpposite = true;
+        else if ((lastShift == 3 && randomShift == 6) || (lastShift == 6 && randomShift == 3)) isOpposite = true;
+        else if ((lastShift == 7 && randomShift == 10) || (lastShift == 10 && randomShift == 7)) isOpposite = true;
+        else if ((lastShift == 8 && randomShift == 11) || (lastShift == 11 && randomShift == 8)) isOpposite = true;
+        else if ((lastShift == 9 && randomShift == 12) || (lastShift == 12 && randomShift == 9)) isOpposite = true;
+
+    } while (isOpposite);
+
+    switch (randomShift)
+    {
                 case 1:
                     if(g13 == ' '&& g12 == ' ')
                     {
@@ -407,8 +425,11 @@ int sayac1=0;
                     if (g11 != old_g11 || g12 != old_g12 || g13 != old_g13 || g21 != old_g21 || g22 != old_g22 || g23 != old_g23 ||g31 != old_g31 || g32 != old_g32 || g33 != old_g33)
             {
                 sayac1++;
-            }
+                lastShift=randomShift;
 
+                Console.WriteLine($"[BİLGİ] Yapay zeka hedef tahtası için {randomShift} numaralı hamleyi yaptı.");
+            }
+}
 //Target Board
 Console.WriteLine("NOS: " + nos);
 Console.WriteLine("Number of Shifts: " + numberofshift);
@@ -677,7 +698,7 @@ int yapilantoplamshift = 0;
                         h33 = ' ';
                         yapilantoplamshift++;
                     }
-                    if(h13 == ' ')
+                    else if(h13 == ' ')
                     {
                         h13 = h23;
                         h23 = h33;
@@ -698,7 +719,7 @@ int yapilantoplamshift = 0;
 
 Console.WriteLine(" --- Round "+ (yapilantoplamshift) + " ---");
 Console.WriteLine("    7   8   9                  7   8   9 ");
-Console.WriteLine("  +-----------+      Board   +-----------+      Board ");
+Console.WriteLine("  +-----------+              +-----------+       ");
 Console.WriteLine($"1 | {h11}   {h12}   {h13} | 4          1 | {g11}   {g12}   {g13} | 4    ");
 Console.WriteLine("  |           |  ");
 Console.WriteLine($"2 | {h21}   {h22}   {h23} | 5          2 | {g21}   {g22}   {g23} | 5   ");
@@ -708,11 +729,10 @@ Console.WriteLine("  +-----------+              +-----------+  ");
 Console.WriteLine("   10  11  12                 10  11  12  ");
 Console.WriteLine($"Yapılan toplam shift: {yapilantoplamshift}");
 Console.WriteLine($"Shift:  {shift}");
-Console.WriteLine("Score : 0");
+Console.WriteLine("Board Score : 0");
 
 
         }
 Console.WriteLine("The ShapeShifter is over!");
     }   
     }
-}
