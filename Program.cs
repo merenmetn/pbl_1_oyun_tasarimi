@@ -67,20 +67,14 @@ class Program
         {
             Console.WriteLine("NOTOS: " + notos + " = A-B-C-D-E");
         }
-        //RANDOM İNİTİAL BOARD OLUŞTURMA 
-
+         //Initial Boards variables
         //1. satır hücreleri
-        char h11 = ' ';
-        char h12 = ' ';
-        char h13 = ' ';
+        char h11 = ' ', h12 = ' ', h13 = ' ';
         //2. satır hücreleri
-        char h21 = ' ';
-        char h22 = ' ';
-        char h23 = ' ';
+        char h21 = ' ', h22 = ' ', h23 = ' ';
         //3. satır hücreleri
-        char h31 = ' ';
-        char h32 = ' ';
-        char h33 = ' ';
+        char h31 = ' ', h32 = ' ', h33 = ' ';
+        //RANDOM İNİTİAL BOARD OLUŞTURMA 
 
         Random rnd = new Random();
         int yerleştirilensembol = 0;
@@ -161,47 +155,331 @@ class Program
 
         }
         //Target board variables
-        //1.column
-        char g11 = h11;
-        char g12 = h12;
-        char g13 = h13;
-        //2.column
-        char g21 = h21;
-        char g22 = h22;
-        char g23 = h23;
-        //3.column
-        char g31 = h31;
-        char g32 = h32;
-        char g33 = h33;
+
+        char g11=h11, g12=h12, g13=h13;
+        char g21=h21, g22=h22, g23=h23;
+        char g31=h31, g32=h32, g33=h33;
+
         //Target Board Shift Commands
 
 
         int sayac1 = 0;
-        int lastShift = 0; // Son yapılan geçerli hamleyi tutacak değişken
-
-        while (sayac1 < numberofshift)
+int lastShift = 0; 
+if(nos==1 || nos == 2)
         {
-            char old_g11 = g11, old_g12 = g12, old_g13 = g13;
-            char old_g21 = g21, old_g22 = g22, old_g23 = g23;
-            char old_g31 = g31, old_g32 = g32, old_g33 = g33;
+            while (sayac1 < numberofshift)
+{
+    char old_g11 = g11, old_g12 = g12, old_g13 = g13;
+    char old_g21 = g21, old_g23 = g23;
+    char old_g31 = g31, old_g32 = g32, old_g33 = g33;
+    
+    
+    int randomShift;
+    bool ayniMi;
 
-            int randomShift;
-            bool isOpposite;
+    do 
+    {
+        randomShift = rnd.Next(1, 13);
+        ayniMi = false; 
 
-            // Zıt hamle gelirse yeniden rastgele sayı üret
-            do
+        switch (randomShift)
+        {
+            case 1:
+                if (lastShift == 4) ayniMi = true;
+                break;
+            case 4:
+                if (lastShift == 1) ayniMi = true;
+                break;
+            case 2:
+                if (lastShift == 5) ayniMi = true;
+                break;
+            case 5:
+                if (lastShift == 2) ayniMi = true;
+                break;
+            case 3:
+                if (lastShift == 6) ayniMi = true;
+                break;
+            case 6:
+                if (lastShift == 3) ayniMi = true;
+                break;
+            case 7:
+                if (lastShift == 10) ayniMi = true;
+                break;
+            case 10:
+                if (lastShift == 7) ayniMi = true;
+                break;
+            case 8:
+                if (lastShift == 11) ayniMi = true;
+                break;
+            case 11:
+                if (lastShift == 8) ayniMi = true;
+                break;
+            case 9:
+                if (lastShift == 12) ayniMi = true;
+                break;
+            case 12:
+                if (lastShift == 9) ayniMi = true;
+                break;
+        }
+    } while (ayniMi); 
+
+            switch (randomShift)
             {
-                randomShift = rnd.Next(1, 13);
-                isOpposite = false;
+                case 1:
+                    if (g13 == ' ' && g12 == ' ')
+                    {
+                        g13 = g11;
+                        g11 = ' ';
+                    }
+                    else if (g13 == ' ')
+                    {
+                        g13 = g12;
+                        g12 = g11;
+                        g11 = ' ';
+                    }
+                    else if (g12 == ' ')
+                    {
+                        g12 = g11;
+                        g11 = ' ';
+                    }
+                    break;
+                case 2:
+                    if (g23 == ' ' && g22 == ' ')
+                    {
+                        g23 = g21;
+                        g21 = ' ';
+                    }
+                    else if (g23 == ' ')
+                    {
+                        g23 = g22;
+                        g22 = ' ';
+                    }
+                    break;
+                case 3:
+                    if (g33 == ' ' && g32 == ' ')
+                    {
+                        g33 = g31;
+                        g31 = ' ';
+                    }
+                    else if (g33 == ' ')
+                    {
+                        g33 = g32;
+                        g32 = g31;
+                        g31 = ' ';
+                    }
+                    else if (g32 == ' ')
+                    {
+                        g32 = g31;
+                        g31 = ' ';
+                    }
+                    break;
+                case 4:
+                    if (g12 == ' ' && g11 == ' ')
+                    {
+                        g11 = g13;
+                        g13 = ' ';
+                    }
+                    else if (g11 == ' ')
+                    {
+                        g11 = g12;
+                        g12 = g13;
+                        g13 = ' ';
+                    }
+                    else if (g12 == ' ')
+                    {
+                        g12 = g13;
+                        g13 = ' ';
+                    }
+                    break;
+                case 5:
+                    if (g22 == ' ' && g21 == ' ')
+                    {
+                        g21 = g23;
+                        g23 = ' ';
+                    }
+                    else if (g21 == ' ')
+                    {
+                        g21 = g22;
+                        g22 = ' ';
+                    }
+                    break;
+                case 6:
+                    if (g32 == ' ' && g31 == ' ')
+                    {
+                        g31 = g33;
+                        g33 = ' ';
+                    }
+                    else if (g31 == ' ')
+                    {
+                        g31 = g32;
+                        g32 = g33;
+                        g33 = ' ';
+                    }
+                    else if (g32 == ' ')
+                    {
+                        g32 = g33;
+                        g33 = ' ';
+                    }
+                    break;
+                case 7:
+                    if (g31 == ' ' && g21 == ' ')
+                    {
+                        g31 = g11;
+                        g11 = ' ';
+                    }
+                    else if (g31 == ' ')
+                    {
+                        g31 = g21;
+                        g21 = g11;
+                        g11 = ' ';
+                    }
+                    break;
+                case 8:
+                    if (g32 == ' ' && g22 == ' ')
+                    {
+                        g32 = g12;
+                        g12 = ' ';
+                    }
+                    else if (g32 == ' ')
+                    {
+                        g32 = g22;
+                        g22 = ' ';
+                    }
+                    break;
+                case 9:
+                    if (g33 == ' ' && g23 == ' ')
+                    {
+                        g33 = g13;
+                        g13 = ' ';
+                    }
+                    else if (g33 == ' ')
+                    {
+                        g33 = g23;
+                        g23 = g13;
+                        g13 = ' ';
+                    }
+                    else if (g23 == ' ')
+                    {
+                        g23 = g13;
+                        g13 = ' ';
+                    }
+                    break;
+                case 10:
+                    if (g21 == ' ' && g11 == ' ')
+                    {
+                        g11 = g31;
+                        g31 = ' ';
+                    }
+                    else if (g11 == ' ')
+                    {
+                        g11 = g21;
+                        g21 = g31;
+                        g31 = ' ';
+                    }
+                    else if (g21 == ' ')
+                    {
+                        g21 = g31;
+                        g31 = ' ';
+                    }
+                    break;
+                case 11:
+                    if (g22 == ' ' && g12 == ' ')
+                    {
+                        g12 = g32;
+                        g32 = ' ';
+                    }
+                    else if (g12 == ' ')
+                    {
+                        g12 = g22;
+                        g22 = ' ';
+                    }
+                    break;
+                case 12:
+                    if (g13 == ' ' && g23 == ' ')
+                    {
+                        g13 = g33;
+                        g33 = ' ';
+                    }
+                    else if (g13 == ' ')
+                    {
+                        g13 = g23;
+                        g23 = g33;
+                        g33 = ' ';
+                    }
+                    else if (g23 == ' ')
+                    {
+                        g23 = g33;
+                        g33 = ' ';
+                    }
+                    break;
+            }
 
-                if ((lastShift == 1 && randomShift == 4) || (lastShift == 4 && randomShift == 1)) isOpposite = true;
-                else if ((lastShift == 2 && randomShift == 5) || (lastShift == 5 && randomShift == 2)) isOpposite = true;
-                else if ((lastShift == 3 && randomShift == 6) || (lastShift == 6 && randomShift == 3)) isOpposite = true;
-                else if ((lastShift == 7 && randomShift == 10) || (lastShift == 10 && randomShift == 7)) isOpposite = true;
-                else if ((lastShift == 8 && randomShift == 11) || (lastShift == 11 && randomShift == 8)) isOpposite = true;
-                else if ((lastShift == 9 && randomShift == 12) || (lastShift == 12 && randomShift == 9)) isOpposite = true;
 
-            } while (isOpposite);
+            if (g11 != old_g11 || g12 != old_g12 || g13 != old_g13 || g21 != old_g21 ||  g23 != old_g23 || g31 != old_g31 || g32 != old_g32 || g33 != old_g33)
+            {
+                sayac1++;
+                lastShift = randomShift;
+            }
+            
+        }
+        }
+        else
+        {
+            while (sayac1 < numberofshift)
+{
+    char old_g11 = g11, old_g12 = g12, old_g13 = g13;
+    char old_g21 = g21, old_g22 = g22, old_g23 = g23;
+    char old_g31 = g31, old_g32 = g32, old_g33 = g33;
+    
+    
+    int randomShift;
+    bool ayniMi;
+
+    do 
+    {
+        randomShift = rnd.Next(1, 13);
+        ayniMi = false; 
+
+        switch (randomShift)
+        {
+            case 1:
+                if (lastShift == 4) ayniMi = true;
+                break;
+            case 4:
+                if (lastShift == 1) ayniMi = true;
+                break;
+            case 2:
+                if (lastShift == 5) ayniMi = true;
+                break;
+            case 5:
+                if (lastShift == 2) ayniMi = true;
+                break;
+            case 3:
+                if (lastShift == 6) ayniMi = true;
+                break;
+            case 6:
+                if (lastShift == 3) ayniMi = true;
+                break;
+            case 7:
+                if (lastShift == 10) ayniMi = true;
+                break;
+            case 10:
+                if (lastShift == 7) ayniMi = true;
+                break;
+            case 8:
+                if (lastShift == 11) ayniMi = true;
+                break;
+            case 11:
+                if (lastShift == 8) ayniMi = true;
+                break;
+            case 9:
+                if (lastShift == 12) ayniMi = true;
+                break;
+            case 12:
+                if (lastShift == 9) ayniMi = true;
+                break;
+        }
+    } while (ayniMi); 
 
             switch (randomShift)
             {
@@ -432,7 +710,10 @@ class Program
             }
             
         }
-        //Target Board
+        }
+
+
+        //first Board
         Console.WriteLine("NOS: " + nos);
         Console.WriteLine("Number of Shifts: " + numberofshift);
         Console.WriteLine(" ");
