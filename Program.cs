@@ -1253,6 +1253,8 @@ if(nos==1 || nos == 2)
 
                 game_score += score * 1;
             }
+
+            //Board Display
             if (g11 == h11 && g12 == h12 && g13 == h13 && g21 == h21 && g22 == h22 && g23 == h23 && g31 == h31 && g32 == h32 && g33 == h33)
             {
                 Console.WriteLine(" ");
