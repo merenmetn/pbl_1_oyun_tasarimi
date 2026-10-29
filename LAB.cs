@@ -1470,7 +1470,8 @@ else if (player_type == "computer")
                     h21 = old_h21; h22 = old_h22; h23 = old_h23;
                     h31 = old_h31; h32 = old_h32; h33 = old_h33;
                 }
-
+                Console.Write("pres enter");
+                Console.ReadLine();
                 // Eğer ters hamle dışında geçerli hamle kalmadıysa mecburen yedeği seç
                 if (bestshift == 0) bestshift = yedekShift;
 
