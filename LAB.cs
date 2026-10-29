@@ -1338,9 +1338,9 @@ if (player_type == "human")
 if (oyundanCiktiMi)
             {
                 Console.WriteLine(" ");
-                Console.WriteLine("-----------------");
-                Console.WriteLine("--Oyundan çıktınız--");
-                Console.WriteLine("-----------------");
+                Console.WriteLine("--------------------------------");
+                Console.WriteLine("--- You have exited the game ---");
+                Console.WriteLine("--------------------------------");
             }
     
 
