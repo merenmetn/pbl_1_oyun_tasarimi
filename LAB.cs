@@ -731,21 +731,36 @@ class Program
 
 
         //Shift Commands
-        int shift;
-        int yapilantoplamshift = 0;
-        if (player_type == "human")
+  int shift;
+int yapilantoplamshift = 0;
+bool oyundanCiktiMi = false; 
+
+if (player_type == "human")
+{
+    while (yapilantoplamshift <= 20 && (g11 != h11 || g12 != h12 || g13 != h13 || g21 != h21 || g22 != h22 || g23 != h23 || g31 != h31 || g32 != h32 || g33 != h33))
+    {
+        Console.Write("Enter shift command (1-12) [Exit for -1]: ");
+        shift = Convert.ToInt32(Console.ReadLine());
+
+        if (shift == -1)
         {
-            while (yapilantoplamshift <= 20 && (g11 != h11 || g12 != h12 || g13 != h13 || g21 != h21 || g22 != h22 || g23 != h23 || g31 != h31 || g32 != h32 || g33 != h33))
+            oyundanCiktiMi = true;
+            break;
+        }
+
+        while (shift < 1 || shift > 12)
+        {
+            Console.Write("Enter shift command (1-12): ");
+            shift = Convert.ToInt32(Console.ReadLine());
+            
+            if (shift == -1)
             {
-                Console.Write("Enter shift command (1-12): ");
-                shift = Convert.ToInt32(Console.ReadLine());
+                oyundanCiktiMi = true;
+                break;
+            }
+        }
 
-                while (shift < 1 || shift > 12)
-                {
-                    Console.Write("Enter shift command (1-12): ");
-                    shift = Convert.ToInt32(Console.ReadLine());
-                }
-
+        if (oyundanCiktiMi) break; 
                 switch (shift)
                 {
                     case 1:
@@ -1145,6 +1160,8 @@ class Program
                         }
                         break;
                 }
+
+        
                 //Game score calculation
                 int game_score = 0;
                 if (h11 != ' ' && h11 == g11)
@@ -1318,6 +1335,15 @@ class Program
                 }
             }
         } 
+if (oyundanCiktiMi)
+            {
+                Console.WriteLine(" ");
+                Console.WriteLine("-----------------");
+                Console.WriteLine("--Oyundan çıktınız--");
+                Console.WriteLine("-----------------");
+            }
+    
+
 else if (player_type == "computer")
         {
             bool oyunBittiMi = false;
@@ -1635,11 +1661,7 @@ else if (player_type == "computer")
                     Console.WriteLine("Board Score= " + game_score);
                 }
             }
-        }
-    }
+        } 
+    } 
 }
-
-
-
-        
-    
+                
